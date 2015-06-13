@@ -9,12 +9,15 @@
     <sprite>sprites\spr_circle</sprite>
     <sprite>sprites\spr_bulletbill</sprite>
     <sprite>sprites\spr_enemy</sprite>
+    <sprite>sprites\spr_wallBlock</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_testplayer</object>
     <object>objects\obj_bullet</object>
+    <object>objects\obj_horizWall</object>
+    <object>objects\obj_vertWall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Test_Room</room>

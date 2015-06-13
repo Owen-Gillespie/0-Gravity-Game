@@ -77,28 +77,14 @@ vspeed-=shoot_y/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (x&gt;1024-190)
+            <string>if (place_meeting(x, y, obj_vertWall))
 {
-x=1024-190;
 hspeed=0;
 }
 
-if (x&lt;190)
-{
-x=190;
-hspeed=0;
-}
-
-if(y&lt;190)
+if(place_meeting(x, y, obj_horizWall))
 {
 vspeed=0;
-y=190;
-}
-
-if(y&gt;1024-190)
-{
-vspeed=0;
-y=1024-190;
 }
 
 image_angle = point_direction(x, y, mouse_x, mouse_y)
@@ -110,7 +96,7 @@ if(alarm[0]==-1)alarm[0]=20;
 
 if mouse_button= mb_right
 {
-    if (true)
+    if (place_meeting(x, y, obj_horizWall)) or (place_meeting(x, y, obj_vertWall)) // if you're touching a wall
     {
         direction=point_direction(x, y, mouse_x, mouse_y);
         speed=10
