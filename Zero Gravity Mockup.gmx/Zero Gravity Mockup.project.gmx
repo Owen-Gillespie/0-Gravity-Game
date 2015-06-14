@@ -10,6 +10,7 @@
     <sprite>sprites\spr_bulletbill</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_wallBlock</sprite>
+    <sprite>sprites\spr_square</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -18,6 +19,7 @@
     <object>objects\obj_bullet</object>
     <object>objects\obj_horizWall</object>
     <object>objects\obj_vertWall</object>
+    <object>objects\obj_grapple</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Test_Room</room>
