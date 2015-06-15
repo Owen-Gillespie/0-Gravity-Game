@@ -83,12 +83,17 @@ vspeed-=shoot_y/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (place_meeting(x, hitbox_right, obj_vertWall)) or (place_meeting(x, hitbox_left, obj_vertWall))
+            <string>hitbox_top = y + 50;
+hitbox_bot = y - 50;
+hitbox_right = x + 50;
+hitbox_left = x - 50;
+
+if collision_rectangle(hitbox_left, hitbox_top, hitbox_right, hitbox_bot, obj_vertWall, false, true) != noone
 {
 hspeed=0;
 }
 
-if (place_meeting(hitbox_top, y, obj_horizWall)) or (place_meeting(hitbox_bot, y, obj_horizWall))
+if collision_rectangle(hitbox_left, hitbox_top, hitbox_right, hitbox_bot, obj_horizWall, false, true) != noone
 {
 vspeed=0;
 }
@@ -102,7 +107,7 @@ if(alarm[0]==-1)alarm[0]=20;
 
 if mouse_check_button_pressed(mb_right)
 {
-    if (place_meeting(x, hitbox_right, obj_vertWall)) or (place_meeting(x, hitbox_left, obj_vertWall)) or (place_meeting(hitbox_top, y, obj_horizWall)) or (place_meeting(hitbox_bot, y, obj_horizWall))
+    if collision_rectangle(hitbox_left, hitbox_top, hitbox_right, hitbox_bot, obj_vertWall, false, true) or collision_rectangle(hitbox_left, hitbox_top, hitbox_right, hitbox_bot, obj_horizWall, false, true)
     {
         speed = 0;
     }
@@ -110,7 +115,7 @@ if mouse_check_button_pressed(mb_right)
 
 if mouse_check_button_released(mb_right)
 {
-    if (place_meeting(x, hitbox_right, obj_vertWall)) or (place_meeting(x, hitbox_left, obj_vertWall)) or (place_meeting(hitbox_top, y, obj_horizWall)) or (place_meeting(hitbox_bot, y, obj_horizWall))
+    if collision_rectangle(hitbox_left, hitbox_top, hitbox_right, hitbox_bot, obj_vertWall, false, true) or collision_rectangle(hitbox_left, hitbox_top, hitbox_right, hitbox_bot, obj_horizWall, false, true)
     {
         direction=point_direction(x, y, mouse_x, mouse_y);
         speed = 10;
