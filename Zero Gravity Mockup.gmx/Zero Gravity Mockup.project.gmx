@@ -17,6 +17,7 @@
   <objects name="objects">
     <object>objects\obj_testplayer</object>
     <object>objects\obj_bullet</object>
+    <object>objects\obj_grapplehook</object>
     <object>objects\obj_horizWall</object>
     <object>objects\obj_vertWall</object>
     <object>objects\obj_grapple</object>

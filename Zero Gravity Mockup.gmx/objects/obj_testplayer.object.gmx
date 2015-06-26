@@ -26,41 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>mass=20;
-grapple=false;
-
-hitbox_top = y + 50;
-hitbox_bot = y - 50;
-hitbox_right = x + 50;
-hitbox_left = x - 50;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>shoot_x=mouse_x-x;  //x between sprite and cursor
-shoot_y=mouse_y-y;  // ditto for y
-shoot_length=sqrt(sqr(shoot_x)+sqr(shoot_y))  //length of line from sprite to cursor
-bullet=instance_create(x+43*(shoot_x/shoot_length),y+43*(shoot_y/shoot_length),obj_bullet);
-bullet.direction=image_angle;
-hspeed-=shoot_x/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
-vspeed-=shoot_y/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
+bullet_ready = 0;
+grapple_shot=false;
+grapple_hit=false;
 </string>
           </argument>
         </arguments>
@@ -102,7 +70,19 @@ image_angle = point_direction(x, y, mouse_x, mouse_y)
 
 if mouse_button= mb_left
 {
-if(alarm[0]==-1)alarm[0]=20;
+    bullet_ready += 1;
+    if bullet_ready == 20
+    {
+        shoot_x=mouse_x-x;  //x between sprite and cursor
+        shoot_y=mouse_y-y;  // ditto for y
+        shoot_length=distance_to_point(shoot_x, shoot_y);  //length of line from sprite to cursor
+        bullet=instance_create(x+43*(shoot_x/shoot_length),y+43*(shoot_y/shoot_length),obj_bullet);
+        bullet.direction=image_angle;
+        hspeed-=shoot_x/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
+        vspeed-=shoot_y/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
+    
+        bullet_ready = 0;
+    }
 }
 
 if mouse_check_button_pressed(mb_right)
@@ -122,33 +102,25 @@ if mouse_check_button_released(mb_right)
     }
 }
 
-if keyboard_check_pressed(vk_space) &amp;&amp; grapple==true
+if keyboard_check_pressed(vk_space) &amp;&amp; grapple_shot==true
 {
-grapple=false;
+    grapple_shot = false;
+    grapple_hit = false;
 }
 
-if keyboard_check(vk_space) &amp;&amp; grapple=false
+if keyboard_check_pressed(vk_space) &amp;&amp; grapple_shot == false
 {
-    if not speed==0 &amp;&amp; distance_to_object(obj_grapple)&lt;300 &amp;&amp; distance_to_object(obj_grapple)&gt;0
-    {
-        grapple=true;
-        grapple_x=instance_nearest(x,y,obj_grapple).x;
-        grapple_y=instance_nearest(x,y,obj_grapple).y;
-        //grapple_length=distance_to_point(grapple_x,grapple_y);
-    }    
+    nearest_grapple = instance_nearest(mouse_x, mouse_y, obj_grapple);
+    shoot_x = nearest_grapple.x - x;
+    shoot_y = nearest_grapple.y - y;
+    shoot_length = distance_to_point(nearest_grapple);
+    hook = instance_create(x+43*(shoot_x/shoot_length), y+43*(shoot_y/shoot_length), obj_grapplehook);
+    obj_grapplehook.direction = point_direction(x, y, nearest_grapple.x, nearest_grapple.y);
+    hspeed-=shoot_x/shoot_length*obj_grapplehook.speed*obj_grapplehook.mass/mass;
+    vspeed-=shoot_y/shoot_length*obj_grapplehook.speed*obj_grapplehook.mass/mass;
+    
+    grapple_shot = true;
 }
-if keyboard_check_released(vk_space) grapple=false;
-
-if grapple==true
-{
-//current_angle=radtodeg(sin((grapple_x-x)/grapple_length));
-//angle_step=grapple_length/speed;
-//current_angle+=angle_step;
-//x = grapple_x + lengthdir_x(grapple_length, current_angle);
-//y = grapple_y + lengthdir_y(grapple_length, current_angle);
-draw_line_width(x,y,grapple_x,grapple_y,10);
-}
-
 </string>
           </argument>
         </arguments>
