@@ -56,8 +56,14 @@ if position_meeting(x, y, obj_grapple)
     obj_testplayer.grapple_hit = true;
 
     rope_length = distance_to_object(obj_testplayer);
+    speed = 0;
     draw_set_color(c_black); // the color of the rope
-    draw_line(x, y, obj_testplayer.x, obj_testplayer.y);
+    draw_line(x, y, obj_testplayer.x, obj_testplayer.y); // no idea why this isn't working
+}
+
+if obj_testplayer.grapple_shot == false
+{
+    instance_destroy();
 }
 </string>
           </argument>

@@ -113,7 +113,7 @@ if keyboard_check_pressed(vk_space) &amp;&amp; grapple_shot == false
     nearest_grapple = instance_nearest(mouse_x, mouse_y, obj_grapple);
     shoot_x = nearest_grapple.x - x;
     shoot_y = nearest_grapple.y - y;
-    shoot_length = distance_to_point(nearest_grapple);
+    shoot_length = distance_to_point(shoot_x, shoot_y);
     hook = instance_create(x+43*(shoot_x/shoot_length), y+43*(shoot_y/shoot_length), obj_grapplehook);
     obj_grapplehook.direction = point_direction(x, y, nearest_grapple.x, nearest_grapple.y);
     hspeed-=shoot_x/shoot_length*obj_grapplehook.speed*obj_grapplehook.mass/mass;
