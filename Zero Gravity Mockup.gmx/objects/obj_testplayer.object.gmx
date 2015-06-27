@@ -72,20 +72,25 @@ image_angle = point_direction(x, y, mouse_x, mouse_y)
 if mouse_button= mb_left
 {
     bullet_ready += 1;
-    // shoot(20, obj_bullet.speed, obj_bullet.mass);
+    shoot(20, 10, 1);
+    // Syntax: shoot(rate_of_fire, bullet_mass, bullet_speed)
     
-    if bullet_ready == 20
-    {
-        shoot_x=mouse_x-x;  //x between sprite and cursor
-        shoot_y=mouse_y-y;  // ditto for y
-        shoot_length=distance_to_point(shoot_x, shoot_y);  //length of line from sprite to cursor
-        bullet=instance_create(x+bullet_offset*(shoot_x/shoot_length),y+bullet_offset*(shoot_y/shoot_length),obj_bullet);
-        bullet.direction=image_angle;
-        hspeed-=shoot_x/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
-        vspeed-=shoot_y/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
+    // Note: a lower rate_of_fire makes the player shoot faster.
     
-        bullet_ready = 0;
-    }
+// ALL OF THE FOLLOWING IS CONTAINED IN SHOOT()
+
+//    if bullet_ready == 20
+//    {
+//        shoot_x=mouse_x-x;  //x between sprite and cursor
+//        shoot_y=mouse_y-y;  // ditto for y
+//        shoot_length=distance_to_point(shoot_x, shoot_y);  //length of line from sprite to cursor
+//        bullet=instance_create(x+bullet_offset*(shoot_x/shoot_length),y+bullet_offset*(shoot_y/shoot_length),obj_bullet);
+//        bullet.direction=image_angle;
+//        hspeed-=shoot_x/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
+//        vspeed-=shoot_y/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
+//    
+//        bullet_ready = 0;
+//    }
 }
 
 if mouse_check_button_pressed(mb_right)
