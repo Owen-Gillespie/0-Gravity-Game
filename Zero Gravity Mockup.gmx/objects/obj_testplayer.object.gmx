@@ -76,21 +76,6 @@ if mouse_button= mb_left
     // Syntax: shoot(rate_of_fire, bullet_mass, bullet_speed)
     
     // Note: a lower rate_of_fire makes the player shoot faster.
-    
-// ALL OF THE FOLLOWING IS CONTAINED IN SHOOT()
-
-//    if bullet_ready == 20
-//    {
-//        shoot_x=mouse_x-x;  //x between sprite and cursor
-//        shoot_y=mouse_y-y;  // ditto for y
-//        shoot_length=distance_to_point(shoot_x, shoot_y);  //length of line from sprite to cursor
-//        bullet=instance_create(x+bullet_offset*(shoot_x/shoot_length),y+bullet_offset*(shoot_y/shoot_length),obj_bullet);
-//        bullet.direction=image_angle;
-//        hspeed-=shoot_x/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
-//        vspeed-=shoot_y/shoot_length*obj_bullet.speed*obj_bullet.mass/mass;
-//    
-//        bullet_ready = 0;
-//    }
 }
 
 if mouse_check_button_pressed(mb_right)
@@ -110,24 +95,41 @@ if mouse_check_button_released(mb_right)
     }
 }
 
-if keyboard_check_pressed(vk_space) &amp;&amp; grapple_shot==true
+if keyboard_check_pressed(vk_space)
 {
-    grapple_shot = false;
-    grapple_hit = false;
+    if grapple_shot == false
+    {
+        nearest_grapple = instance_nearest(mouse_x, mouse_y, obj_grapple);
+        shoot_x = nearest_grapple.x - x;
+        shoot_y = nearest_grapple.y - y;
+        shoot_length = distance_to_point(shoot_x, shoot_y);
+        hook = instance_create(x+bullet_offset*(shoot_x/shoot_length), y+bullet_offset*(shoot_y/shoot_length), obj_grapplehook);
+        obj_grapplehook.direction = point_direction(x, y, nearest_grapple.x, nearest_grapple.y);
+        hspeed-=shoot_x/shoot_length*obj_grapplehook.speed*obj_grapplehook.mass/mass;
+        vspeed-=shoot_y/shoot_length*obj_grapplehook.speed*obj_grapplehook.mass/mass;
+        
+        grapple_shot = true;
+    }
+    else
+    {
+        grapple_shot = false;
+        with (obj_grapplehook){instance_destroy()};
+        grapple_hit = false;
+    }
 }
 
-if keyboard_check_pressed(vk_space) &amp;&amp; grapple_shot == false
+
+if grapple_hit == true
 {
-    nearest_grapple = instance_nearest(mouse_x, mouse_y, obj_grapple);
-    shoot_x = nearest_grapple.x - x;
-    shoot_y = nearest_grapple.y - y;
-    shoot_length = distance_to_point(shoot_x, shoot_y);
-    hook = instance_create(x+bullet_offset*(shoot_x/shoot_length), y+bullet_offset*(shoot_y/shoot_length), obj_grapplehook);
-    obj_grapplehook.direction = point_direction(x, y, nearest_grapple.x, nearest_grapple.y);
-    hspeed-=shoot_x/shoot_length*obj_grapplehook.speed*obj_grapplehook.mass/mass;
-    vspeed-=shoot_y/shoot_length*obj_grapplehook.speed*obj_grapplehook.mass/mass;
-    
-    grapple_shot = true;
+    grapple_x=nearest_grapple.x;
+    grapple_y=nearest_grapple.y;
+    if distance_to_point(grapple_x,grapple_y)&gt;obj_grapplehook.rope_length
+    {
+        tangent=(point_direction(grapple_x,grapple_y,x,y)+90)%360;
+        new_velocity=dot_product(speed*cos(degtorad(direction)),speed*sin(degtorad(direction)),cos(degtorad(tangent)),sin(degtorad(tangent)));
+        direction=tangent;
+        speed=new_velocity;
+    }
 }
 </string>
           </argument>

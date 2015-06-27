@@ -14,9 +14,9 @@
 
 if obj_testplayer.bullet_ready == argument0
 {
-    shoot_x = mouse_x - obj_testplayer.x;  //x between sprite and cursor
+    shoot_x = mouse_x - obj_testplayer.x;  // relative x between sprite and cursor
     shoot_y = mouse_y - obj_testplayer.y;  // ditto for y
-    shoot_length = point_distance(obj_testplayer.x, obj_testplayer.y, shoot_x, shoot_y);  //length of line from sprite to cursor
+    shoot_length = point_distance(0,0,shoot_x,shoot_y);  //length of the x and y vectors
     bullet = instance_create(x + obj_testplayer.bullet_offset * (shoot_x/shoot_length), y + obj_testplayer.bullet_offset * (shoot_y/shoot_length), obj_bullet);
     bullet.direction = obj_testplayer.image_angle;
     obj_testplayer.hspeed -= shoot_x / shoot_length * argument1 * argument2 / obj_testplayer.mass;
