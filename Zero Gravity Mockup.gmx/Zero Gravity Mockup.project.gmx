@@ -10,6 +10,7 @@
     <sprite>sprites\spr_bulletbill</sprite>
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_wallBlock</sprite>
+    <sprite>sprites\spr_horizWall</sprite>
     <sprite>sprites\spr_square</sprite>
   </sprites>
   <backgrounds name="background"/>
