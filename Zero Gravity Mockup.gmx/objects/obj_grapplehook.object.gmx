@@ -52,11 +52,11 @@ mass=1;
             <string>image_angle=direction;
 draw_set_colour(c_white);
 draw_line(0,0,room_width,room_height);
-if position_meeting(x, y, obj_grapple)
+if position_meeting(x, y, obj_grapple) &amp;&amp; obj_testplayer.grapple_hit==false
 {
     obj_testplayer.grapple_hit = true;
-
-    rope_length = distance_to_object(obj_testplayer);
+    grapple_pad=instance_nearest(x,y,obj_grapple);
+    rope_length = point_distance(grapple_pad.x,grapple_pad.y,obj_testplayer.x,obj_testplayer.y);
     speed = 0;
     draw_set_color(c_black); // the color of the rope
     draw_line_width_colour(x, y, obj_testplayer.x, obj_testplayer.y,5,c_black,c_black); // no idea why this isn't working
