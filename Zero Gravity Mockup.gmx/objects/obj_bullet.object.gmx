@@ -57,6 +57,12 @@ damage=1;
 
 if position_meeting(x,y,obj_enemy)
 {
+    // Calculate knockback for enemy
+    // PLACEHOLDER
+    // compare speed of bullet to speed of player
+    
+    
+    // Calculate damage for enemy
     enemy=instance_nearest(x,y,obj_enemy);
     obj_enemy.player_health -= damage;
     instance_destroy();

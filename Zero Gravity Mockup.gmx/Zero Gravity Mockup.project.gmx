@@ -18,6 +18,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\shoot.gml</script>
+    <script>scripts\spawn_player.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_testplayer</object>
