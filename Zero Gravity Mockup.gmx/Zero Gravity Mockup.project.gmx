@@ -12,6 +12,7 @@
     <sprite>sprites\spr_wallBlock</sprite>
     <sprite>sprites\spr_horizWall</sprite>
     <sprite>sprites\spr_square</sprite>
+    <sprite>sprites\spr_enemy2</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -25,6 +26,7 @@
     <object>objects\obj_horizWall</object>
     <object>objects\obj_vertWall</object>
     <object>objects\obj_grapple</object>
+    <object>objects\obj_enemy</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Test_Room</room>
