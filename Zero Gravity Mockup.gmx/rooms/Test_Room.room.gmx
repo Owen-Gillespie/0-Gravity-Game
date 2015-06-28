@@ -53,7 +53,7 @@
   <instances>
     <instance objName="obj_testplayer" x="576" y="352" name="inst_8D8AEC4B" locked="0" code="" scaleX="0.581818163394928" scaleY="0.581818163394928" colour="4294967295" rotation="0"/>
     <instance objName="obj_horizWall" x="0" y="0" name="inst_CAD0F263" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
-    <instance objName="obj_grapple" x="736" y="544" name="inst_96401F7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grapple" x="256" y="512" name="inst_96401F7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_horizWall" x="256" y="0" name="inst_AEFA3AB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_horizWall" x="512" y="0" name="inst_C5C96A2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_horizWall" x="768" y="0" name="inst_A29D9254" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -77,6 +77,7 @@
     <instance objName="obj_vertWall" x="1504" y="768" name="inst_2B6512D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_vertWall" x="1504" y="864" name="inst_958BAD0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy" x="160" y="96" name="inst_675411CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_grapple" x="1024" y="512" name="inst_C027503E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

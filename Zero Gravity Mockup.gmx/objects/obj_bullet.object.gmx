@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>speed=10;
+direction=obj_testplayer.image_angle;
+hspeed+=obj_testplayer.hspeed;
+vspeed+=obj_testplayer.vspeed;
 mass=2;
 </string>
           </argument>
