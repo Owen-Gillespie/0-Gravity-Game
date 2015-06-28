@@ -25,11 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mass=20;
+            <string>// Stats created in spawn_player()
+mass=20;
+gun_type = 0;
+player_health = 20;
+team = 0;
+
 bullet_ready = 0;
+bullet_offset = 43;
 grapple_shot=false;
 grapple_hit=false;
-bullet_offset = 43;
 </string>
           </argument>
         </arguments>
