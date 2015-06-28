@@ -1,9 +1,10 @@
-/// shoot(rate_of_fire, bullet_speed, bullet_mass, bullet_damage)
+/// shoot(rate_of_fire, bullet_speed, bullet_mass, bullet_damage, team)
 
 // rate_of_fire = argument0
 // bullet_speed = argument1
 // bullet_mass = argument2
 // bullet_damage = argument3
+// team = argument4
 
 if obj_testplayer.bullet_ready >= argument0
 {
@@ -20,6 +21,7 @@ if obj_testplayer.bullet_ready >= argument0
     speed = argument1;
     mass = argument2;
     damage = argument3;
+    team = argument4;
     }
     
     obj_testplayer.bullet_ready = 0;

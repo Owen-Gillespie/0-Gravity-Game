@@ -31,6 +31,7 @@ hspeed+=obj_testplayer.hspeed;
 vspeed+=obj_testplayer.vspeed;
 mass=2;
 damage=1;
+team = 0;
 </string>
           </argument>
         </arguments>
@@ -57,15 +58,20 @@ damage=1;
 
 if position_meeting(x,y,obj_enemy)
 {
-    // Calculate knockback for enemy
-    // PLACEHOLDER
-    // compare speed of bullet to speed of player
+//    player_hit = instance_nearest(obj_enemy);
+    // DOESN'T WORK
+//    if team != player_hit.team
+//    {
+        // Calculate knockback for enemy
+        // compare speed of bullet to speed of player
+        obj_enemy.hspeed += (hspeed - obj_enemy.hspeed) * mass / obj_enemy.mass;
+        obj_enemy.vspeed += (vspeed - obj_enemy.vspeed) * mass / obj_enemy.mass;
     
-    
-    // Calculate damage for enemy
-    enemy=instance_nearest(x,y,obj_enemy);
-    obj_enemy.player_health -= damage;
-    instance_destroy();
+        // Calculate damage for enemy
+        enemy=instance_nearest(x,y,obj_enemy);
+        obj_enemy.player_health -= damage;
+        instance_destroy();
+//    }
 }
 </string>
           </argument>

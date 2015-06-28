@@ -78,8 +78,8 @@ image_angle = point_direction(x, y, mouse_x, mouse_y)
 
 if mouse_button= mb_left
 {
-    shoot(20, 10, 5, 2);
-    // Syntax: shoot(rate_of_fire, bullet_mass, bullet_speed, bullet_damage)
+    shoot(20, 10, 5, 2, 0);
+    // Syntax: shoot(rate_of_fire, bullet_mass, bullet_speed, bullet_damage, team)
     
     // Note: a lower rate_of_fire makes the player shoot faster.
 }

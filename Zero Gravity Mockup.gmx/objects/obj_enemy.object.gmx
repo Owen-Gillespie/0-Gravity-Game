@@ -26,8 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>player_health=20;
+mass = 10;
 direction_counter=20;
-speed=5;
+speed=0;
+team = 1;
 </string>
           </argument>
         </arguments>
@@ -53,8 +55,8 @@ speed=5;
             <string>direction_counter-=1;
 if direction_counter=0
 {
-    direction_counter=20;
-    direction=random(360);
+//    direction_counter=20;
+//    direction=random(360);
 }
 
 if player_health&lt;=0
