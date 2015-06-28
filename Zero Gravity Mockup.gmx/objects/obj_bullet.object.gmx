@@ -30,6 +30,7 @@ direction=obj_testplayer.image_angle;
 hspeed+=obj_testplayer.hspeed;
 vspeed+=obj_testplayer.vspeed;
 mass=2;
+damage=1;
 </string>
           </argument>
         </arguments>
@@ -57,7 +58,7 @@ mass=2;
 if position_meeting(x,y,obj_enemy)
 {
     enemy=instance_nearest(x,y,obj_enemy);
-    obj_enemy.player_health-=2;
+    obj_enemy.player_health -= damage;
     instance_destroy();
 }
 </string>

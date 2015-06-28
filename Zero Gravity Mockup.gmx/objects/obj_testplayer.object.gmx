@@ -57,6 +57,8 @@ hitbox_bot = y - 50;
 hitbox_right = x + 50;
 hitbox_left = x - 50;
 
+bullet_ready += 1;
+
 if collision_rectangle(hitbox_left, hitbox_top, hitbox_right, hitbox_bot, obj_vertWall, false, true) != noone
 {
 hspeed=0;
@@ -71,9 +73,8 @@ image_angle = point_direction(x, y, mouse_x, mouse_y)
 
 if mouse_button= mb_left
 {
-    bullet_ready += 1;
-    shoot(20, 10, 1);
-    // Syntax: shoot(rate_of_fire, bullet_mass, bullet_speed)
+    shoot(20, 10, 5, 2);
+    // Syntax: shoot(rate_of_fire, bullet_mass, bullet_speed, bullet_damage)
     
     // Note: a lower rate_of_fire makes the player shoot faster.
 }
@@ -121,17 +122,16 @@ if keyboard_check_pressed(vk_space)
 
 if grapple_hit == true
 {
-    grapple_x=nearest_grapple.x;
-    grapple_y=nearest_grapple.y;
-    if point_distance(x,y,grapple_x,grapple_y)&gt;obj_grapplehook.rope_length
+    grapple_position= instance_nearest(obj_grapplehook.x, obj_grapplehook.y, obj_grapple);
+    if point_distance(x,y,grapple_position.x,grapple_position.y)&gt;obj_grapplehook.rope_length
     {
-        rope_dir=point_direction(grapple_x,grapple_y,x,y);
+        rope_dir=point_direction(grapple_position.x,grapple_position.y,x,y);
         tangent=(rope_dir+90)%360;
         new_velocity=dot_product(speed*cos(degtorad(direction)),speed*sin(degtorad(direction)),cos(degtorad(tangent)),sin(degtorad(tangent)));
         direction=tangent;
         speed=new_velocity;
-        x= grapple_x + lengthdir_x(obj_grapplehook.rope_length,rope_dir);
-        y= grapple_y + lengthdir_y(obj_grapplehook.rope_length,rope_dir);
+        x= grapple_position.x + lengthdir_x(obj_grapplehook.rope_length,rope_dir);
+        y= grapple_position.y + lengthdir_y(obj_grapplehook.rope_length,rope_dir);
     }
 }
 </string>
