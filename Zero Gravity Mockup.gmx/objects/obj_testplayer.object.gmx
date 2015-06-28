@@ -105,7 +105,7 @@ if keyboard_check_pressed(vk_space)
         hook = instance_create(x+bullet_offset*dcos(shot_angle), y+bullet_offset*dsin(shot_angle), obj_grapplehook);
         obj_grapplehook.direction = point_direction(x, y, nearest_grapple.x, nearest_grapple.y);
         hspeed-=dcos(shot_angle)*obj_grapplehook.speed*obj_grapplehook.mass/mass;
-        vspeed-=dsin(shot_angle)*obj_grapplehook.speed*obj_grapplehook.mass/mass;
+        vspeed+=dsin(shot_angle)*obj_grapplehook.speed*obj_grapplehook.mass/mass;
         
         grapple_shot = true;
     }
