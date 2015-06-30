@@ -33,6 +33,8 @@ team = 0;
 
 bullet_ready = 0;
 bullet_offset = 43;
+
+grapple_ready = 0;
 grapple_shot=false;
 grapple_hit=false;
 </string>
@@ -63,6 +65,7 @@ hitbox_right = x + 50;
 hitbox_left = x - 50;
 
 bullet_ready += 1;
+grapple_ready += 1;
 
 if collision_rectangle(hitbox_left, hitbox_top, hitbox_right, hitbox_bot, obj_vertWall, false, true) != noone
 {
@@ -101,7 +104,7 @@ if mouse_check_button_released(mb_right)
     }
 }
 
-if keyboard_check_pressed(vk_space)
+if keyboard_check_pressed(vk_space) &amp;&amp; grapple_ready &gt;= 15
 {
     if grapple_shot == false
     {
