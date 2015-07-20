@@ -1,4 +1,4 @@
-/// spawn_player(x_coord, y_coord, mass, gun_type, player_health, team)
+/// scr_spawn_player(x_coord, y_coord, mass, gun_type, player_health, team)
 
 // x_coord = argument0
 // y_coord = argument1

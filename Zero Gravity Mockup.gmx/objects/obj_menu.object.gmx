@@ -25,15 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed=20;
-mass=1;
-grapple_hit = false;
+            <string>menu[0] = "Start";
+menu[1] = "Continue";
+menu[2] = "Class Select";
+menu[3] = "Options";
+menu[4] = "Quit";
 
-xpos = x;
-ypos = y;
-
-playerx = obj_testplayer.x;
-playery = obj_testplayer.y;
+space = 64;
+cursor_pos = 0;
 </string>
           </argument>
         </arguments>
@@ -56,46 +55,22 @@ playery = obj_testplayer.y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_angle=direction;
-draw_set_colour(c_white);
-draw_line(0,0,room_width,room_height);
-if position_meeting(x, y, obj_grapple) &amp;&amp; obj_testplayer.grapple_hit==false
+            <string>if (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"))) cursor_pos--;
+
+if (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"))) cursor_pos++;
+
+
+if (cursor_pos &lt; 0) // So we don't go out of bounds of menu options
 {
-    obj_testplayer.grapple_hit = true;
-    grapple_pad=instance_nearest(x,y,obj_grapple);
-    rope_length = point_distance(grapple_pad.x,grapple_pad.y,obj_testplayer.x,obj_testplayer.y);
-    speed = 0;
-    draw_set_color(c_black); // the color of the rope
-    draw_line_width_colour(x, y, obj_testplayer.x, obj_testplayer.y,5,c_black,c_black); // no idea why this isn't working
+    cursor_pos = array_length_1d(menu) - 1; // array_length_1d(menu) returns the size of array "menu"
 }
 
-if obj_testplayer.grapple_shot == false
+if (cursor_pos &gt; array_length_1d(menu) - 1)
 {
-    instance_destroy();
+    cursor_pos = 0;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_destroy();
+
+if (keyboard_check_pressed(vk_space)) scr_menu(); // Use scr_menu to decide what to do.
 </string>
           </argument>
         </arguments>
@@ -118,11 +93,19 @@ if obj_testplayer.grapple_shot == false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if grapple_hit = true
+            <string>draw_set_halign(fa_left);
+draw_set_valign(fa_middle);
+draw_set_font(fa_options);
+draw_set_color(c_black);
+
+var m;
+for (m = 0; m &lt; array_length_1d(menu); m ++)
 {
-    draw_line(xpos, ypos, playerx, playery);
-    draw_sprite(spr_bulletbill, -1, xpos, ypos);
+    draw_text(x + space, y + (m * space), string(menu[m]))
 }
+
+draw_sprite(spr_bulletbill, 0, x + 16, y + cursor_pos * space);
+
 </string>
           </argument>
         </arguments>

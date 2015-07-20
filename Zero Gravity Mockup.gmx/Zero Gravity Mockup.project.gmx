@@ -17,9 +17,13 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\shoot.gml</script>
-    <script>scripts\spawn_player.gml</script>
+    <script>scripts\scr_shoot.gml</script>
+    <script>scripts\scr_spawnplayer.gml</script>
+    <script>scripts\scr_menu.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fa_options</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_testplayer</object>
     <object>objects\obj_bullet</object>
@@ -28,9 +32,11 @@
     <object>objects\obj_vertWall</object>
     <object>objects\obj_grapple</object>
     <object>objects\obj_enemy</object>
+    <object>objects\obj_menu</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Test_Room</room>
+    <room>rooms\rm_menu</room>
+    <room>rooms\rm_testroom</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -1,4 +1,4 @@
-/// shoot(rate_of_fire, bullet_speed, bullet_mass, bullet_damage, team)
+/// scr_shoot(rate_of_fire, bullet_speed, bullet_mass, bullet_damage, team)
 
 // rate_of_fire = argument0
 // bullet_speed = argument1
