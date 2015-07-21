@@ -37,6 +37,9 @@ bullet_offset = 43;
 grapple_ready = 0;
 grapple_shot=false;
 grapple_hit=false;
+
+grapple_hit_x = 0;
+grapple_hit_y = 0;
 </string>
           </argument>
         </arguments>
@@ -139,6 +142,35 @@ if grapple_hit == true
         x= grapple_position.x + lengthdir_x(obj_grapplehook.rope_length,rope_dir);
         y= grapple_position.y + lengthdir_y(obj_grapplehook.rope_length,rope_dir);
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite(spr_square, image_index, x, y);
+
+if grapple_hit == true
+{
+    draw_set_color(c_black);
+    draw_line(grapple_hit_x, grapple_hit_y, x, y);
 }
 </string>
           </argument>
